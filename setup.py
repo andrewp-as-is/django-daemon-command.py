@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='django-daemon-command',
-    version='2020.4.18',
+    version='2020.4.20',
     install_requires=[
         'Django',
         'setuptools',

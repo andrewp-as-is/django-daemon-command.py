@@ -35,17 +35,18 @@ class DaemonCommand(BaseCommand):
         self.save_exception(exc)
 
     def print_exception(self,exc):
-        traceback.print_exception(type(exc),str(exc),exc.__traceback__,file=sys.stderr)
+        exc_type, exc_value, exc_traceback = sys.exc_info()
+        traceback.print_exception(exc_type,exc_value,exc_traceback,file=sys.stderr)
 
     def save_exception(self,exc):
+        exc_type, exc_value, exc_traceback = sys.exc_info()
         f = StringIO()
-        traceback.print_exception(type(exc), str(exc), exc.__traceback__,file=f)
-        type = exc.__module__+'.'+exc.__name__ if exc.__module__ else exc.__name__
+        traceback.print_exception(exc_type, exc_value, exc_traceback,file=f)
         ExcTraceback(
             pid = os.getpid(),
-            argv = ' '.join(sys.argv),
-            type = exc.__module__+'.'+exc.__name__ if exc.__module__ else exc.__name__,
-            value = exc_value if value else '',
+            command = sys.argv[0],
+            type = '.'.join(filter(None,[getattr(exc_type,'__module__',''),exc_type.__name__])),
+            value = exc_value if exc_value else '',
             traceback=f.getvalue()
         ).save()
 
@@ -55,4 +56,4 @@ class DaemonCommand(BaseCommand):
     def log(self,msg):
         if sys.stdout.isatty():
             print('LOG [%s]: %s' % (datetime.now().strftime("%Y-%m-%d %H:%M:%S"),msg))
-        Log(pid = os.getpid(),argv=' '.join(sys.argv),msg=msg).save()
+        Log(pid = os.getpid(),command = sys.argv[0],msg=msg).save()
