@@ -1,14 +1,13 @@
 <!--
-https://pypi.org/project/readme-generator/
-https://pypi.org/project/python-readme-generator/
+https://readme42.com
 -->
 
-[![](https://img.shields.io/pypi/pyversions/django-daemon-command.svg?longCache=True)](https://pypi.org/project/django-daemon-command/)
+
 [![](https://img.shields.io/pypi/v/django-daemon-command.svg?maxAge=3600)](https://pypi.org/project/django-daemon-command/)
 [![](https://img.shields.io/badge/License-Unlicense-blue.svg?longCache=True)](https://unlicense.org/)
-[![Travis](https://api.travis-ci.org/andrewp-as-is/django-daemon-command.py.svg?branch=master)](https://travis-ci.org/andrewp-as-is/django-daemon-command.py/)
+[![](https://github.com/andrewp-as-is/django-daemon-command.py/workflows/tests42/badge.svg)](https://github.com/andrewp-as-is/django-daemon-command.py/actions)
 
-#### Installation
+### Installation
 ```bash
 $ [sudo] pip install django-daemon-command
 ```
@@ -18,7 +17,7 @@ $ [sudo] pip install django-daemon-command
     +   exception traceback is saved in the database (`SELECT * FROM daemon_command_exc_traceback`)
 +   logs (`SELECT * FROM daemon_command_log`)
 
-#### Settings
+##### `settings.py`
 ```python
 INSTALLED_APPS = [
     ...
@@ -60,5 +59,5 @@ class Command(DaemonCommand):
 ```
 
 <p align="center">
-    <a href="https://pypi.org/project/python-readme-generator/">python-readme-generator</a>
+    <a href="https://readme42.com/">readme42.com</a>
 </p>

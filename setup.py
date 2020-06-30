@@ -1,15 +1,7 @@
-from setuptools import setup
+import setuptools
 
-setup(
+setuptools.setup(
     name='django-daemon-command',
-    version='2020.4.20',
-    install_requires=[
-        'Django',
-        'setuptools',
-    ],
-    packages=[
-        'django_daemon_command',
-        'django_daemon_command.management',
-        'django_daemon_command.migrations',
-    ],
+    install_requires=open('requirements.txt').read().splitlines(),
+    packages=setuptools.find_packages()
 )
